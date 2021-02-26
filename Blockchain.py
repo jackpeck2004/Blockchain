@@ -1,4 +1,3 @@
-import random
 from Block import Block
 
 
@@ -7,7 +6,6 @@ class Blockchain:
     blockNum = 0
 
     # create genesis block
-    # genesis = Block(0, random.randint(0, 100), hex(random.randint(0, 17012004)), "The genesis block")
     genesis = Block(0, "", "The genesis Block")
 
     def __init__(self, rule):
