@@ -1,25 +1,13 @@
 #!/usr/bin/env python3
 
 from Block import Block
+from Blockchain import Blockchain
 
-blockchain = []
-blockNum = 0
+blockchain = Blockchain()
 
-def getBlockNumber():
-  global blockNum
-  blockNum += 1
-  return blockNum
+for i in range(10):
+    blockchain.mine("Block " + str(i + 1))
 
-def mine(number, prev_hash, data):
-  nonce = 0
-  while True:
-    block = Block(number, nonce, prev_hash, data)
-    if block.hash.startswith("0"):
-      return block
-    else:
-      nonce += 1
-
-genesis_block = mine(getBlockNumber(), "This is a test str", ["hello"])
-
-print(genesis_block.hash)
-
+while blockchain.head is not None:
+    blockchain.head.print()
+    blockchain.head = blockchain.head.next
