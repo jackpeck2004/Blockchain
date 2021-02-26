@@ -24,6 +24,14 @@ class Blockchain:
         self.blockNum += 1
         return self.blockNum
 
+    def __block_can_be_added__(self, block):
+        if block.hash.startswith(self.rule):
+            return True
+        return False
+
     def add(self, block):
-        self.current_block.next = block
-        self.current_block = self.current_block.next
+        if self.__block_can_be_added__(block):
+            self.current_block.next = block
+            self.current_block = self.current_block.next
+        else:
+            return
