@@ -5,7 +5,8 @@ from Blockchain import Blockchain
 
 blockchain = Blockchain("0000")
 
-def  main():
+
+def main():
     for i in range(10):
         mined_block = Block(blockchain.get_block_number(), blockchain.current_block.hash, "Block " + str(i + 1))
         mined_block.mine(blockchain.rule)
@@ -15,6 +16,6 @@ def  main():
         blockchain.head.print()
         blockchain.head = blockchain.head.next
 
+
 if __name__ == "__main__":
     main()
-
