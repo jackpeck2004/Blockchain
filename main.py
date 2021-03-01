@@ -3,12 +3,16 @@
 from Block import Block
 from Blockchain import Blockchain
 
-blockchain = Blockchain("0000")
+blockchain = Blockchain(rule="0000")
 
 
 def main():
     for i in range(10):
-        mined_block = Block(blockchain.get_block_number(), blockchain.current_block.hash, "Block " + str(i + 1))
+        mined_block = Block(
+            number=blockchain.get_block_number(),
+            prev_hash=blockchain.current_block.hash,
+            data="Block " + str(i + 1)
+        )
         mined_block.mine(blockchain.rule)
         blockchain.add(mined_block)
 
